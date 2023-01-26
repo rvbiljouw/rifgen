@@ -380,7 +380,7 @@ impl<I: AsRef<Path>, S: AsRef<Path>> FileGenerator<I, S> {
         let mut file_data: HashMap<Rc<String>, TypeHolder> = HashMap::new();
         let mut closure = |file: &DirEntry| {
             let file_path = file.path();
-            println!(file_path);
+            println!("{}", file_path);
             let file_contents = std::fs::read_to_string(&file_path)
                 .unwrap_or_else(|_| panic!("{}{}", UNABLE_TO_READ, file_path.to_str().unwrap()));
             let compiled_file = syn::parse_file(&file_contents).expect("Invalid rust file");
